@@ -1,0 +1,20 @@
+<%# app\views\prototypes\index.html.erb %>
+<main class="main">
+  <div class="inner">
+  
+    <%# ログインしている場合 %>
+    <% if user_signed_in? %>
+      <div class="greeting">
+        こんにちは、<%= link_to current_user.name + "さん", "/users/#{current_user.id}", class: :greeting__link %>
+      </div>
+    <% end %>
+
+    <div class="card__wrapper">
+      <% @prototypes.each do |prototype| %>
+        <%# 投稿機能実装後、部分テンプレートでプロトタイプ投稿一覧を表示する %>
+        <%= render partial: "prototypes/prototype", locals: { prototype: prototype } %>
+      <% end %>
+    </div>
+
+  </div>
+</main>
